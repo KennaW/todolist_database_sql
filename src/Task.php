@@ -2,12 +2,23 @@
     class Task
     {
         private $description;
+        private $id;
 
-        function __construct($description)
+        function __construct($description, $id = null)
         {
             $this->description = $description;
+            $this->id = $id;
         }
 
+        function getId()
+        {
+            return $this->id;
+        }
+
+        function setId($new_id)
+        {
+            $this->id = (int) $new_id;
+        }
         function setDescription($new_description)
         {
             $this->description = (string) $new_description;
@@ -37,7 +48,7 @@
 
         static function deleteAll()
         {
-            $_SESSION['list_of_tasks'] = array();
+            $GLOBALS['DB']->exec("DELETE FROM tasks *;");
         }
     }
 ?>
