@@ -1,5 +1,5 @@
 <?php
-    Class Task
+    class Task
     {
         private $description;
 

@@ -11,13 +11,13 @@
      ));
 
      $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.twig')
+        return $app['twig']->render('tasks.twig', array('tasks' => Task:: getALl()));
      });
 
      $app->post("/tasks", function() use ($app) {
          $tasks = new Task($_POST['description']);
          $task->save();
-         return $app['twig']->render('create_task.twig', array('newtask' => $task))
+         return $app['twig']->render('create_task.twig', array('newtask' => $task));
      });
 
      $app->post("/delete_tasks", function() use ($app) {
