@@ -31,8 +31,9 @@
 
         function save()
         {
-            $GLOBALS['DB']->exec("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}');");
-
+            $statement = $GLOBALS['DB']->query("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}') RETURNING id;");
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            $this->setId($result['id']);
         }
         static function getAll()
         {
@@ -40,7 +41,8 @@
             $tasks = array();
             foreach ($returned_tasks as $task) {
                 $description = $task['description'];
-                $new_task = new Task($description);
+                $id = $task['id'];
+                $new_task = new Task($description, $id);
                 array_push($tasks, $new_task);
             }
             return $tasks;
