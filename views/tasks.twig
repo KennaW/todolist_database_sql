@@ -11,20 +11,19 @@
             </p>
             <ul>
                 {% for task in tasks %}
-                    <li>{{ task.getDescription }}</li>
+                    <p>{{ task.getDescription }} ID:{{task.getId}}</p>
+
+
+
                 {% endfor %}
             </ul>
         {% endif %}
-        <p>
 
-            <li>HELLO HELLO HELLO : {{ task1.getDescription }}</li>
-            <li>VARDUMP : {{ vardump }}</li>
-        </p>
         <form action="/tasks" method="post">
-            <label for='description'>Category description</label>
+            <label for='description'>Task Description</label>
             <input id='description' name='description' type='text'>
 
-            <button type="submit">Add category</button>
+            <button type="submit">Add Task</button>
         </form>
         <form action="/delete_tasks" method="post">
             <button type="submit">Clear</button>
