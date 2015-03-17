@@ -1,21 +1,33 @@
 <?php
 
+//tells php secret things
+
     /**
     * @backupGlobals disabled
     * @backupStaticAttributes disabled
     */
 
+//loads Task.php
     require_once "src/Task.php";
+
+//assigns database to variable
 
     $DB = new PDO('pgsql:host=localhost;dbname=to_do_test');
 
+
+//Class with phpunit test
     class TaskTest extends PHPUnit_Framework_TestCase
     {
+
+        //protected function. function that can only be edited by inhereted ... things
+        //called after every tests
         protected function tearDown()
         {
             Task::deleteAll();
         }
 
+        //tests the save for tasks
+        //assigns id to null -- can sometimes force a pass test (false positive)
         function test_save()
         {
             //Arrange
@@ -31,6 +43,7 @@
              $this->assertEquals($test_task, $result[0]);
          }
 
+         //tests get all for tasks
          function test_getAll()
          {
              //Arrange
@@ -50,6 +63,7 @@
 
          }
 
+         //tests delete all for tasks
          function test_deleteAll()
          {
              //Arrange
@@ -69,6 +83,7 @@
              $this->assertEquals([], $result);
 
          }
+
 
          function test_getId()
          {
