@@ -4,8 +4,8 @@
         private $description;
         private $id;
 
-        //passing parameters on description and id
-        //id is now equal to $id which is null
+        //passing parameters on description and id (defaults to null)
+        //id is now equal to $id and id
         function __construct($description, $id = null)
         {
             $this->description = $description;
@@ -77,9 +77,3 @@
         }
     }
 ?>
-
-function returnCat($cat) {
-    return $cat
-}
-$apples = 'dog'
-returnCat($apples)

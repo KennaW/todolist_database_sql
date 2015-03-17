@@ -15,7 +15,11 @@
                 {% endfor %}
             </ul>
         {% endif %}
+        <p>
 
+            <li>HELLO HELLO HELLO : {{ task1.getDescription }}</li>
+            <li>VARDUMP : {{ vardump }}</li>
+        </p>
         <form action="/tasks" method="post">
             <label for='description'>Category description</label>
             <input id='description' name='description' type='text'>

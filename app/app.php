@@ -23,12 +23,15 @@
          return $app['twig']->render('categories.twig', array('categories' => Category::getAll()));
      });
 
+     //add to get all
+     //$GLOBALS['DB']->query("SELECT * FROM tasks WHERE description = {'$description'};");
 
-//BROKEN HERE -- 'clear' returns 'undefined index:description line 29'
+     //CHANGINGEGINGING WE CHAGNED THIS
      $app->post("/tasks", function() use ($app){
-         $task = new Task($_POST['description']);
-         $task->save();
-         return $app['twig']->render('tasks.twig', array('tasks' => Task::getAll()));
+         
+         $task1 = Task::find(21);
+
+         return $app['twig']->render('tasks.twig', array('task1' => $task1, 'vardump' => $vardump));
      });
 
      $app->post("/delete_tasks", function() use ($app) {
@@ -37,7 +40,6 @@
      });
 
 
-//BROKEN HERE -- same error as above
      $app->post("/categories", function() use ($app) {
          $category = new Category($_POST['name']);
          $category->save();
@@ -47,6 +49,11 @@
      $app->post("/delete_categories", function() use ($app){
          Category::deleteAll();
          return $app['twig']->render('index.twig');
+     });
+
+     $app->get("/search", function() use ($app){
+         $task1 = Task::find($_GET['search_id']);
+         return $app['twig']->render('search.twig', array('task1' => $task1));
      });
      return $app;
 ?>
