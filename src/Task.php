@@ -61,7 +61,7 @@
             $GLOBALS['DB']->exec("DELETE FROM tasks *;");
         }
 
-        //
+        //uses serach_id to find tasks
         static function find($search_id)
         {
             $found_task = null;
