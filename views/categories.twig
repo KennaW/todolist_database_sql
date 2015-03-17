@@ -16,13 +16,13 @@
             </ul>
         {% endif %}
 
-        <form id="/categories" method="post">
+        <form action="/categories" method="post">
             <label for='name'>Category name</label>
             <input id='name' name='name' type='text'>
 
             <button name="submit">Add category</button>
         </form>
-        <form id="/delete_categories" method="post">
+        <form action="/delete_categories" method="post">
             <button name="submit">Clear</button>
         </form>
         <p>
